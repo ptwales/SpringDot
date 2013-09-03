@@ -1,15 +1,25 @@
-Created by Philip Wales for Senior Independent Study Project at The College of Wooster Physics and Mathematics Departments (2013)
-Advisors: Dr. John F. Lindner (Physics) and Dr. R. Drew Pasteur (Math)
+Numerical Method Library for developing programs for computational programming. Based on code from my Senior Thesis, except this time it will be OO from the start.
 
 About:
-	Initially designed to solve a system of differential equations describing the equations of motion for a unique three body problem for my IS.  The goal now is implement object orientation to abstract the solver from the particular system.
-	The initial project was not developed from the ground up to object oriented or fully abstracted from the system; although some designs were made with that in mind during the process.  
-	Current version includes a 
 GOALS (In order:)
-	Iterative Method "Engine" (Direct Methods shouldn't need this)
-		Extend to different problems Boundry, initial value, ODE, PDE etc..
-			Have methods for problems, etc PDEengine, then Euler, EulerCromer, RungeKutta, etc
-	Unix commandline flags for Engine?
+	Three Class trees, { System, Method, Storage }
+		All in namespaces { problem, solution, answer }
+
+		First, build with what I am familiar with, system of PDE's, just to confirm it works, then build from the bottom up.
+
+	System
+		It is mandatory that the user extends an existing subclass and use that instead.
+		User defines needed fields and methods.
+		Example: Spring
+			System -> Differential Equation -> { Ordinary, Hamiltonian } -> user extended
+	
+	Method
+		Method's available are determined by the class of system used by composition.
+
+	Storage
+		determined by composition of the Method
+
+Applications
 
 	GUI plotter for solutions
 		Have an abstract(?) solution Graph class

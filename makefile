@@ -9,3 +9,4 @@ user_system.o: user_system.cpp
 
 clean:
 	rm *.o
+	rm springTest

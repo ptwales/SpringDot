@@ -11,13 +11,16 @@ namespace problem
 class diffEq
 {
 public:
-    diffEq(){};
-    ~diffEq() {};
+    diffEq( ) { };
+    ~diffEq( ) { };
 
-    virtual void derivative( y_vec& y, y_vec& y_dot) {};
+    virtual void derivative( y_vec& y, y_vec& y_dot ) { };
 
     unsigned int varCount;
     unsigned int derivePower;
+
+protected:
+	
 };
 }
 #endif // DIFFEQ_H

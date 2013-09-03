@@ -19,8 +19,9 @@ namespace problem
 			static const unsigned int varCount = 1;
 //			static const unsigned int derivePower;
 			
-			static const double k = 0.1;
-			static const double m = 1;
+		private:
+			static double k = 0.1;
+			static double m = 1;
 	};
 }
 
