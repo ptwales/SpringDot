@@ -11,13 +11,11 @@ namespace problem
 class diffEq
 {
 public:
-    diffEq( ) { };
-    ~diffEq( ) { };
 
     virtual void derivative( y_vec& y, y_vec& y_dot ) { };
 
-    unsigned int varCount;
-    unsigned int derivePower;
+    const unsigned int varCount;
+    const unsigned int derivePower;
 
 protected:
 	

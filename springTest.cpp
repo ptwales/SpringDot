@@ -1,13 +1,14 @@
 #include <iostream>
-#include "user_system.h"
+#include "springTest_system.h"
 
-using namespace problem;
 
 int main()
 {
-	user_system derp;
+	using namespace problem;
 
-	const unsigned int vecSize = user_system::varCount*user_system::derivePower;
+	springTest_system derp;
+
+	const unsigned int vecSize = springTest_system::varCount*springTest_system::derivePower;
 
 	y_vec y(2);
 	y[0]=0;

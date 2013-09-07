@@ -1,11 +1,9 @@
 #ifndef HAMILTONIAN_H
 #define HAMILTONIAN_H
 
-#include "diffEq.h"
-
 namespace problem
 {
-class hamiltonian	:public diffEq
+class hamiltonian
 	{
 	public:
 		static const unsigned int derivePower = 2;

@@ -1,11 +1,11 @@
-springTest: main.o user_system.o
-	g++ main.cpp user_system.o -o springTest
+springTest: springTest.o springTest_system.o
+	g++ springTest.cpp springTest_system.o -o springTest
 
-main.o: main.cpp
-	g++ -c main.cpp
+springTest.o: springTest.cpp
+	g++ -c springTest.cpp
 
-user_system.o: user_system.cpp
-	g++ -c user_system.cpp
+springTest_system.o: springTest_system.cpp
+	g++ -c springTest_system.cpp
 
 clean:
 	rm *.o
