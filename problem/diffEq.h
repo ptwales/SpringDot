@@ -6,7 +6,6 @@
 
 namespace problem
 {
-	typedef std::vector<user_prec> y_vec;
 
 class diffEq
 {
