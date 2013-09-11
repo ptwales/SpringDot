@@ -1,30 +1,35 @@
 #ifndef TWODVEC_H
 #define TWODVEC_H
 
-#include <vector>
+#include <precision.h>
 
-namespace answer
+namespace storage
 {
-	using namespace std;
-
-	typedef vector<bool> boolVec;
-
-	template <class T>
-	struct twoDVec
+	class twoDVec
 	{
-		// Duoas @ cplusplus.com forums
-		typedef vector<T> row_t;
-		typedef vector<row_t> sheet_t;
-		// endcite
-		twoDVec ( unsigned int, unsigned int, T ) {
+	public:
+		typedef std::vector<user_prec> row_t;
+		typedef std::vector<row_t> sheet_t;
+
+		twoDVec ( unsigned int width=1, unsigned int height=1, user_prec init_fill=filler) 
+		{
+			sheet.resize( width, row_t( height, init_fill) );
+		}
+
+		twoDVec ( unsigned int width, row_t init_vec ) 
+		{
 			sheet.resize( width, init_vec );
 		}
-		twoDVec ( unsigned int, row_t ) {
-			sheet.resize( width, init_vec );
+
+		twoDVec ( const twoDVec& original )
+		{
+			sheet = original.sheet;
 		}
+
+		//virtual void pack ( row_t ) = 0;
 
 		sheet_t sheet;
-	}
+	};
 }
 
 #endif //TWODVEC_H
