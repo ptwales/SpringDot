@@ -1,6 +1,6 @@
 Numerical Method Library 
 ============
-Develop programs for numerical analysis using iterative methods in C++.  Direct methods can be implemented but GNU/Octave might be the better option that C++.
+Develop programs for numerical analysis using iterative methods in C++.  Direct methods can be implemented but GNU/Octave might be the better option than C++.
 
 ##Usage
 Users will need to define their own system subclass of the available systems classes and define the necessary fields and any inherited pure virtual functions as needed.  Prepared applications might be developed later but until then the user will need to write their own applications with an instance of their defined system object.
