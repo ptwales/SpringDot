@@ -38,22 +38,23 @@ mySystem.solution.solve( tFinal, dt );	// ( unsinged int, double )
 	* make packable parent class that both twoDvec and above class inherits?
 - Recreate above classes using arrays instead of `std::vector`
 	* Test if there is a difference
+
 ###Methods 
-???
+Finish Storage
+
 ###Systems
-???
+Finish Methods
 
 ##Possible Applications
 
 ###GUI plotter for solutions
-Have an abstract(?) solution Graph class
-Add basic graphic classes to it, allow users to extend for more.
-Error and Performance Analysis
+- Have an abstract solution Graph class
+- Add basic graphic classes to it, allow users to extend for more.
+- Error and Performance Analysis
 
-###Parameter space plotter (Bread and butter)
-Output to SQL?
-Unix command flags.
-Other uses?
+###Parameter space plotter
+First complicated application
+Compare with senior thesis for performance
 
 ##License
 GPLv3
