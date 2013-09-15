@@ -57,4 +57,4 @@ First complicated application
 Compare with senior thesis for performance
 
 ##License
-GPLv3
+Apache v2.0
