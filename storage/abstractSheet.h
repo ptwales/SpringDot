@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef STORAGE_H
-#define STORAGE_H
+#ifndef ABSTRACTSHEET_H
+#define ABSTRACTSHEET_H
 
 #include "twoDVec.h"
 
@@ -49,38 +49,6 @@ namespace storage
 
 
 	/*
-	 * sheetByTime:
-	 * sub vectors are y(t)
-	 * So if vector y is <a,b,c,d> then shetByTime is:
-	 * < <a(2), b(2), c(2), d(2)>, <a(2), b(2), c(2), d(2)>, ... >
-	 *
-	 * sheet_t::iterator last;
-	 * In constructor last will point to the first subvector of the sheet
-	 */
-	class sheetByTime	:public abstractSheet 
-	{
-	public:
-		sheetByTime ( unsigned int length, boolVec_t _orders, user_prec init_fill=filler) : twoDVec ( length, _orders.size(), filler )
-		{
-			orders = _orders;
-			last = sheet.begin();
-		}
-
-		sheetByTime ( const sheetByTime& original, boolVec _orders ) : twoDVec ( original )
-		{
-			// twoDVec copy constructer has copied the sheet
-			// now remove undesired elements
-			// This can be a pain with this method
-		}
-
-		void pack ( y_vec )
-		{
-			return;
-		}
-	protected:
-		sheet_t::iterator last;
-	};
-	/*
 	 * sheetByEl:
 	 * sub vectors are  y_n(t)
 	 * Each sub vector is an element of vector y as a function of time
@@ -96,4 +64,4 @@ namespace storage
 */
 
 }
-#endif // STORAGE_H
+#endif // ABSTRACTSHEET_H
