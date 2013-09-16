@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #ifndef STORAGE_H
 #define STORAGE_H
 
@@ -20,21 +21,41 @@
 namespace storage
 {
 
-	class abstractSheet	:public twDVec
+	/*
+	 * Introduces pack(y_vec), clear (), orders and last
+	 * Derived sheets are meant to be intialized as empty twoDVec with preAllocated space
+	 * std::vector<bool> orders; will deterimine the dimensions of the vector depending on the subclass and it must be the same size as the y_vec used
+	 *
+	 * Only TRUE elements of orders will be stored and have space allocated to it.
+	 * So if, 
+	 * 	orders = < 1, 0, 0, 1, 1>
+	 * then the sheet will be either (3 x length) or (length x 3) depending on the subclass.
+	 *
+	 * pack(y_vec)
+	 * Assuming same orders as above then y_vec[0], y_vec[3], y_vec[4] are stored.  How it is stored is determined by subclass. pack(y_vec) assigns the next value
+	 *
+	 * clear()
+	 * 
+	 */
+	class abstractSheet	:public twoDVec
 	{
 	public:
 		typedef std::vector<bool> boolVec_t;
 		virtual void pack ( y_vec ) = 0;
-		void clear ( ) { last = sheet.begin(); }
-
+		void clear ( ) = 0;
 	protected:
 		boolVec_t orders;
-		sheet_t::iterator last;
 	};
+
 
 	/*
 	 * sheetByTime:
 	 * sub vectors are y(t)
+	 * So if vector y is <a,b,c,d> then shetByTime is:
+	 * < <a(2), b(2), c(2), d(2)>, <a(2), b(2), c(2), d(2)>, ... >
+	 *
+	 * sheet_t::iterator last;
+	 * In constructor last will point to the first subvector of the sheet
 	 */
 	class sheetByTime	:public abstractSheet 
 	{
@@ -56,11 +77,17 @@ namespace storage
 		{
 			return;
 		}
-
+	protected:
+		sheet_t::iterator last;
 	};
 	/*
 	 * sheetByEl:
-	 * sub vectors are  
+	 * sub vectors are  y_n(t)
+	 * Each sub vector is an element of vector y as a function of time
+	 * so if y is <a,b,c,d>
+	 * sheetByEl could be 
+	 * < <a(1),a(2),a(3),...> , <b(1),b(2),b(3),...>, ... >
+	 * Some elements can be ignored according to the boolVec passed to it
 	 */
 /*
 	class sheetByEl		:public twoDVec
