@@ -15,7 +15,10 @@
  * sheetYSub:
  * sub vectors are y(t)
  * So if vector y is <a,b,c,d> then shetByTime is:
- * < <a(2), b(2), c(2), d(2)>, <a(2), b(2), c(2), d(2)>, ... >
+ * < <a(1), b(1), c(1), d(1)>
+ * , <a(2), b(2), c(2), d(2)>
+ * , <a(3), b(3), c(3), d(3)>
+ * , ... >
  *
  * sheet_t::iterator last;
  * In constructor last will point to the first subvector of the sheet
@@ -24,12 +27,17 @@
 #ifndef SHEETYSUB_H
 #define SHEETYSUB_H
 
+#include <abstractSheet.h>
+#include <algorithm>
+
 namespace storage 
 {
 	class sheetYSub	:public abstractSheet 
 	{
 	public:
-		sheetYSub ( unsigned int length, boolVec_t _orders, user_prec init_fill=filler) : twoDVec ( length, _orders.size(), filler )
+		sheetYSub ( unsigned int length, boolVec_t _orders, user_prec init_fill=filler) : twoDVec ( length	// size of supervector
+				, std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
+				, init_fill)
 		{
 			orders = _orders;
 			last = sheet.begin();
@@ -37,21 +45,17 @@ namespace storage
 
 		//Default Copy should be good enough
 
+		//Throws errors
+		void pack ( y_vec );
 
-		void pack ( y_vec )
+		void reset ( )
 		{
-			
-		}
-
-		void clear ( )
-		{
-
+			last = sheet.begin();
 		}
 	protected:
 		sheet_t::iterator last;
 
 	};
-
 }
 
 #endif // SHEETY_SUB
