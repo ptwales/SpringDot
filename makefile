@@ -1,4 +1,5 @@
-#actual build stuff
+sheetYsub.o: storage/twoDVec.h storage/abstractVec.h storage/sheetYsub.h storage/sheetYsub.cpp
+	g++ -c 
 
 
 clean:
@@ -19,5 +20,8 @@ springTest_system.o: springTest_system.cpp
 #	./twoDVec
 
 # define folder as variable later
-twoDVec: storage/twoDVec.h answer/twoDVecTest.cpp
-	g++ twoDVecTest.cpp -o twoDVecTest
+test_twoDVec: storage/twoDVec.h storage/twoDVecTest.cpp
+	g++ storage/twoDVecTest.cpp -o twoDVecTest
+
+
+
