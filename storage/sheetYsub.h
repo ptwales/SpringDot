@@ -27,7 +27,7 @@
 #ifndef SHEETYSUB_H
 #define SHEETYSUB_H
 
-#include <abstractSheet.h>
+#include "abstractSheet.h"
 #include <algorithm>
 
 namespace storage 
@@ -35,11 +35,14 @@ namespace storage
 	class sheetYSub	:public abstractSheet 
 	{
 	public:
-		sheetYSub ( unsigned int length, boolVec_t _orders, user_prec init_fill=filler) : twoDVec ( length	// size of supervector
+		sheetYSub ( unsigned int length = 1
+				, boolVec_t _orders = boolVec_t(1,true)
+				, user_prec init_fill=filler)
+			: abstractSheet ( length	// size of supervector
 				, std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
+				, _orders
 				, init_fill)
 		{
-			orders = _orders;
 			last = sheet.begin();
 		}
 

@@ -26,7 +26,7 @@ namespace storage
 
 		twoDVec ( unsigned int length=1, unsigned int height=1, user_prec init_fill=filler) 
 		{
-			sheet.resize( length, y_vec( length, init_fill) );
+			sheet.resize( length, y_vec( height, init_fill) );
 		}
 
 		twoDVec ( unsigned int length, y_vec init_vec ) 

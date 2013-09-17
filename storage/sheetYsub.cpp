@@ -13,40 +13,41 @@
  * limitations under the License.
  */
 
-#include <sheetYsub.h>
+#include "sheetYsub.h"
 
-using namespace storage
-
-void sheetYSub::pack ( y_vec yIn )
+namespace storage
 {
-	boolVec_t::iterator orderIt = orders.begin();
-	y_vec::iterator yInIt = yIn.begin();
-	y_vec::iterator yOutIt = last->begin();
-
-	if ( last == sheet.end() ) {
-		//Throw error
-		return;
-	}
-
-	while ( orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end() ) 
+	void sheetYSub::pack ( y_vec yIn )
 	{
-		if ( *orderIt ) {
-			*yOutIt = *yInIt;
-			yOutIt++;
+		boolVec_t::iterator orderIt = orders.begin();
+		y_vec::iterator yInIt = yIn.begin();
+		y_vec::iterator yOutIt = last->begin();
+
+		if ( last == sheet.end() ) {
+			//Throw error
+			return;
 		}
-		yInIt++;
-		orderIt++;
-	}
 
-	if ( orderIt != orders.end() ) {
-		//Throw Error
-	}
-	if ( yInIt != yIn.end() ) {
-		//Throw Error
-	}
-	if ( yOutIt != last->end() ) {
-		//Throw Error
-	}
+		while ( orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end() ) 
+		{
+			if ( *orderIt ) {
+				*yOutIt = *yInIt;
+				yOutIt++;
+			}
+			yInIt++;
+			orderIt++;
+		}
 
-	last++;
+		if ( orderIt != orders.end() ) {
+			//Throw Error
+		}
+		if ( yInIt != yIn.end() ) {
+			//Throw Error
+		}
+		if ( yOutIt != last->end() ) {
+			//Throw Error
+		}
+
+		last++;
+	}
 }

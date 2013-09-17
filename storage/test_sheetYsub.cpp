@@ -1,49 +1,52 @@
 #include <iostream>
-#include "twoDVec.h"
+#include "sheetYsub.h"
 
 
 using namespace std;
 int main ()
 {
-	cout << "Compiles and Runs!" << endl;
-	storage::twoDVec *test;
-
-
-	cout<<endl<<endl;
 	//test default constructor
-	cout << "Test Default Constructor\ntest = new twoDVec;"<<endl;
-	test = new storage::twoDVec;
-	cout << "Test accesor\ntest->sheet[0][0] = "<< test->sheet[0][0] << endl;
+	cout << "Test Default Constructor . . . ";
+	storage::sheetYSub *test = new storage::sheetYSub;
+	cout << ( ( test->sheet[0][0] == storage::filler 
+				&& test->sheet.size() == 1 
+				&& test->sheet[0].size() == 1 )? 
+			"pass \n" : "fail \n" );
 
-
-	cout<<endl<<endl;
-	//test Destructor
-	cout << "Test Destructor\ndelete test;"<<endl;
+	cout << "Test Destructor . . . ";
 	delete test;
+	cout << "pass \n";
 
+	size_t length = 10;
+	size_t width = 6;
+	storage::user_prec phil = 12.34;
+	storage::abstractSheet::boolVec_t myBoolVec(width, true);
 
-	cout<<endl<<endl;
 	//test filler constructor
-	cout << "Test filler constructor\ntest = new twoDVec(5,5);"<<endl;
-	test = new storage::twoDVec(5,5);
-	cout << "Test accesor\ntest->sheet[4][4] = "<< test->sheet[4][4] << endl;
+	cout << "Test filler constructor . . . ";
+	test = new storage::sheetYSub(length, myBoolVec );
+	cout << ( (	test->sheet.size() == length
+				&& test->sheet[length-1].size() == width
+				&& test->sheet[length-1][width-1] == storage::filler)? 
+			"pass \n" : "fail \n" );
 	delete test;
 
-	cout<<endl<<endl;
 	//test element constructor
-	cout << "Test element constructor\ntest = new twoDVec(5,5,3);" <<endl;
-	test = new storage::twoDVec(5,5,3);
-	cout << "Test accesor\ntest->sheet[4][4] = "<< test->sheet[4][4] << endl;
+	cout << "Test element constructor . . . ";
+	test = new storage::sheetYSub(length
+			, vector<bool>( true,width )
+			, phil );
+	cout << ( ( test->sheet[0][0] == phil )?
+			"pass \n" : "fail \n" );
+	delete test;
 
-	cout<<endl<<endl;
 	//test vector constructor
-	cout << "Test vector constructor\nuser_prec mySequence[] = {1,2,3,4,5};\nyVec myVec(mySequence, mySequence + sizeof(mySequence) / sizeof(user_prec));\ntest = new twoDVec(5,5,myVec);"<<endl;
 
-
-	storage::user_prec mySequence[] = {1,2,3,4,5};
-	storage::y_vec myVec(mySequence, mySequence + sizeof(mySequence) / sizeof(storage::user_prec));
-	test = new storage::twoDVec( 5, myVec );
+	cout << "Test boolean constructor . . . ";
+	for ( booVec_T 
+	test = new storage::sheetYSub( length, myBoolVec, phil );
 	
+	/*
 	cout << "Test accesor"<<endl;;
 
 	for(int n = 0; n < 5; n++)
@@ -70,6 +73,7 @@ int main ()
 		}
 		cout<<endl;
 	}
+	*/
 	return EXIT_SUCCESS;
 }
 

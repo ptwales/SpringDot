@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "twoDVec.h"
 
 
@@ -11,9 +12,15 @@ int main ()
 
 	cout<<endl<<endl;
 	//test default constructor
-	cout << "Test Default Constructor\ntest = new twoDVec;"<<endl;
+	/*cout << "Test Default Constructor\ntest = new twoDVec;"<<endl;
 	test = new storage::twoDVec;
 	cout << "Test accesor\ntest->sheet[0][0] = "<< test->sheet[0][0] << endl;
+	*/
+	
+	cout << "Test Default Constructor\ntest = new storage::twoDVec; . . . ";
+	test = new storage::twoDVec;
+	string result = ( test->sheet[0][0] == 0 )? "pass" : "fail";
+	cout << result << endl;
 
 
 	cout<<endl<<endl;

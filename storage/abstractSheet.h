@@ -48,9 +48,19 @@ namespace storage
 	{
 		public:
 			typedef std::vector<bool> boolVec_t;
+			abstractSheet ( unsigned int length
+					, unsigned int width
+					, boolVec_t _orders
+					, user_prec init_fill=filler )
+				: twoDVec ( length
+						, width
+						, init_fill )
+		{
+			orders = _orders;
+		}
 			virtual void pack ( y_vec ) = 0;
-			void reset ( ) = 0;
-		protected:
+			virtual void reset ( ) = 0;
+
 			boolVec_t orders;
 	};
 }
