@@ -15,21 +15,27 @@
 #ifndef DIFFEQMETHOD_H
 #define DIFFEQMETHOD_H
 
-#include <storage.h>
+#include <sheetYsub.h>
 
 namespace solutions
 {
+	typedef void (*dFunc_t) ( const y_vec&, y_vec& );
+
 	class diffEqMeth
 	{
 	public:
 
-		diffEqMeth() {};
+		diffEqMeth ( dFunc_t _deriveFunc, storage::sheetYsub _&writeTo ) 
+		{
+			deriveFunc = _deriveFunc;
+			writeTo = _writeTo;
+		};
+
 		~diffEqMeth() {};
 
 	protected:
 		storage::sheetYsub &writeTo;
-		
-
+		dFunc_t deriveFunc;
 	};
 }
 

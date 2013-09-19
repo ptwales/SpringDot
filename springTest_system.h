@@ -14,9 +14,9 @@ namespace problem
 	class springTest_system	:public ode, hamiltonian
 	{
 		public:
-			void derivative( y_vec& y, y_vec& y_dot );
+			void derivative( y_vec& y const, y_vec& y_dot );
 
-			const unsigned int varCount = 1;
+			const size_t varCount = 1;
 			
 		private:
 			double k = 0.1;

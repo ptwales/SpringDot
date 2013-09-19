@@ -21,7 +21,7 @@ namespace storage
 {
 	class twoDVec
 	{
-	public:
+	sublic:
 		typedef std::vector<y_vec> sheet_t;
 
 		twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler)
