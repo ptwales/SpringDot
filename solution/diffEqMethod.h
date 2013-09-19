@@ -26,16 +26,9 @@ namespace solutions
 		diffEqMeth() {};
 		~diffEqMeth() {};
 
-		answer::dataArray* storage; // Change to type of parcel
-		anwser::orderVec orders;
-
 	protected:
-
-		void checkStorage ( ) {
-			if( typeid( storage ) !=  answer::dataArray* ) {
-				throw typeid ( storage );
-			}
-		}
+		storage::sheetYsub &writeTo;
+		
 
 	};
 }

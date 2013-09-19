@@ -27,15 +27,15 @@
 #ifndef SHEETYSUB_H
 #define SHEETYSUB_H
 
-#include "abstractSheet.h"
+#include "selectiveSheet.h"
 #include <algorithm>
 
 namespace storage 
 {
-	class sheetYSub	:public abstractSheet 
+	class sheetYSub	:public selectiveSheet 
 	{
 	public:
-		sheetYSub ( unsigned int length = 1
+		sheetYSub ( size_t length = 1
 				, boolVec_t _orders = boolVec_t(1,true)
 				, user_prec init_fill=filler)
 			: abstractSheet ( length	// size of supervector

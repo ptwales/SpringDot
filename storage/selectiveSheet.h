@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * ABSTRACT SHEET 
+ * SELECTIVE SHEET 
  * Introduces:
  * 	std::vector<bool> orders
  *
@@ -37,19 +37,19 @@
  * 
  */
 
-#ifndef ABSTRACTSHEET_H
-#define ABSTRACTSHEET_H
+#ifndef SELECTIVESHEET_H
+#define SELECTIVESHEET_H
 
 #include "twoDVec.h"
 
 namespace storage
 {
-	class abstractSheet	:public twoDVec
+	class selectiveSheet	:public twoDVec
 	{
 		public:
 			typedef std::vector<bool> boolVec_t;
-			abstractSheet ( unsigned int length
-					, unsigned int width
+			abstractSheet ( size_t length
+					, size_t width
 					, boolVec_t _orders
 					, user_prec init_fill=filler )
 				: twoDVec ( length
@@ -64,4 +64,4 @@ namespace storage
 			boolVec_t orders;
 	};
 }
-#endif // ABSTRACTSHEET_H
+#endif // SELECTIVESHEET_H
