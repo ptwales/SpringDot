@@ -7,8 +7,8 @@ sheetYsub.o: storage/twoDVec.h storage/abstractSheet.h storage/sheetYsub.h stora
 testall: $(Tests)
 
 # define folder as variable later
-test_twoDVec: storage/twoDVec.h storage/twoDVecTest.cpp
-	g++ storage/twoDVecTest.cpp -o test_twoDVec
+test_twoDVec: storage/twoDVec.h storage/test_twoDVec.cpp
+	g++ storage/test_twoDVec.cpp -o test_twoDVec
 	./test_twoDVec
 
 test_sheetYsub: storage/test_sheetYsub.cpp sheetYsub.o 

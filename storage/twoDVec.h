@@ -24,22 +24,36 @@ namespace storage
 	public:
 		typedef std::vector<y_vec> sheet_t;
 
-		twoDVec ( unsigned int length=1, unsigned int height=1, user_prec init_fill=filler) 
+		twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler)
 		{
 			sheet.resize( length, y_vec( height, init_fill) );
+			vecSize = length;
+			subVecSize = height;
 		}
 
-		twoDVec ( unsigned int length, y_vec init_vec ) 
-		{
-			sheet.resize( length, init_vec );
+		twoDVec ( size_t length, y_vec init_vec )
+		{ 
+			sheet.resize( length, init_vec ); 
+			vecSize = length;
+			subVecSize = init_vec.size();
 		}
 
 		twoDVec ( const twoDVec& original )
-		{
+		{ 
 			sheet = original.sheet;
+			vecSize = sheet.size();
+			subVecSize = sheet[0].size();
 		}
+		
+		y_vec operator [] ( size_t n )	
+		{ return sheet[n]; }
 
+		size_t size() { return vecSize; }
+		size_t subSize() { return subVecSize; }
+
+	protected:
 		sheet_t sheet;
+		size_t vecSize, subVecSize;
 	};
 }
 
