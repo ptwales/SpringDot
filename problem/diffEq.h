@@ -25,10 +25,10 @@ class diffEq
 {
 public:
 
-    virtual void derivative( y_vec& y, y_vec& y_dot ) { };
+    virtual void derivative( y_vec& y, y_vec& y_dot ) =0;
 
-    const unsigned int varCount;
-    const unsigned int derivePower;
+    const size_t varCount;
+    const size_t derivePower;
 
 protected:
 	

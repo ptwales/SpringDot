@@ -44,10 +44,11 @@
 
 namespace storage
 {
+	typedef std::vector<bool> boolVec_t;
+
 	class selectiveSheet	:public twoDVec
 	{
 		public:
-			typedef std::vector<bool> boolVec_t;
 			selectiveSheet ( size_t _vecSize
 					, size_t _subVecSize
 					, boolVec_t _orders

@@ -19,23 +19,25 @@
 
 namespace solutions
 {
-	typedef void (*dFunc_t) ( const y_vec&, y_vec& );
+
+	typedef void (dFunc_t) ( const y_vec&, y_vec& );
 
 	class diffEqMeth
 	{
 	public:
 
-		diffEqMeth ( dFunc_t _deriveFunc, storage::sheetYsub _&writeTo ) 
-		{
+		diffEqMeth ( dFunc_t& _deriveFunc, storage::selectiveSheet& _writeTo ) {
 			deriveFunc = _deriveFunc;
 			writeTo = _writeTo;
 		};
 
 		~diffEqMeth() {};
 
+		virtual void solve ( user_prec _dt ) = 0;
+
 	protected:
-		storage::sheetYsub &writeTo;
-		dFunc_t deriveFunc;
+		storage::selectiveSheet &writeTo;
+		dFunc_t& deriveFunc;
 	};
 }
 
