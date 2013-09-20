@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="43cm" height="34cm" viewBox="-1 -1 856 678" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="0" y="0" width="472" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="0" width="472" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="236" y="16">&lt;&lt;storage&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="236" y="35">twoDVec</text>
+    <rect style="fill: #ffffff" x="0" y="44" width="472" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="44" width="472" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="58">#vecSize: size_t</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="74">#subVecSize: size_t</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="90">+sheet_t: typedef  = std::vector&lt;y_vec&gt;</text>
+    <rect style="fill: #ffffff" x="0" y="96" width="472" height="148"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="96" width="472" height="148"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="110">+&lt;&lt;Defualt Constructor&gt;&gt; twoDVec(_vecSize:size_t=1,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="126">                                 _subVecSize:size_t=1,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="142">                                 init_fill:user_prec=filler)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="158">+&lt;&lt;Constructor&gt;&gt; twoDVec(_vecSize:size_t,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="174">                         init_vec:y_vec)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="190"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="206">+operator[](n:size_t): y_vec</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="222">+size(): size_t</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="238">+subSize(): size_t</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="0" y="300" width="464.3" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="300" width="464.3" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="232.15" y="316">&lt;&lt;storage&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="232.15" y="335">selectiveSheet</text>
+    <rect style="fill: #ffffff" x="0" y="344" width="464.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="344" width="464.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="358">+boolVec_t: typedef std::vector&lt;bool&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="374">#orders: boolVec_t</text>
+    <rect style="fill: #ffffff" x="0" y="380" width="464.3" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="380" width="464.3" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="394">+&lt;&lt;constructor&gt;&gt; selectiveSheet(vecSize:size_T,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="410">                                subVecSize:size_t,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="426">                                _orders:boolVec_t,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="442">                                init_fill:user_prec=filler)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="3" y="458">+pack(y_vec): virtual void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="3" y="474">+reset(): virtual void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="3" y="490">+reset(boolVec_t): virtual void</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="236,262.236 236,280 232.15,280 232.15,300 "/>
+    <polygon style="fill: #ffffff" points="244,262.236 236,246.236 228,262.236 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="244,262.236 236,246.236 228,262.236 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="0" y="560" width="464.3" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="560" width="464.3" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="232.15" y="576">&lt;&lt;storage&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="232.15" y="595">sheetYsub</text>
+    <rect style="fill: #ffffff" x="0" y="604" width="464.3" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="604" width="464.3" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="618">#last: sheet_t:iterator</text>
+    <rect style="fill: #ffffff" x="0" y="624" width="464.3" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="0" y="624" width="464.3" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="638">+pack(yIn:y_vec): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="654">+reset(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="3" y="670">+reOrder(newOrders:boolVec_t,reInit:user_prec=filler): void</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="232.15,514.236 232.15,513 232.15,559 232.15,560 "/>
+    <polygon style="fill: #ffffff" points="240.15,514.236 232.15,498.236 224.15,514.236 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="240.15,514.236 232.15,498.236 224.15,514.236 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="720" y="20" width="133.35" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="20" width="133.35" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="786.675" y="36">&lt;&lt;solution&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="786.675" y="55">DiffEqMethod</text>
+    <rect style="fill: #ffffff" x="720" y="64" width="133.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="64" width="133.35" height="8"/>
+    <rect style="fill: #ffffff" x="720" y="72" width="133.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="72" width="133.35" height="8"/>
+  </g>
+</svg>

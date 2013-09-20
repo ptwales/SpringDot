@@ -38,7 +38,7 @@ namespace storage
 		sheetYSub ( size_t length = 1
 				, boolVec_t _orders = boolVec_t(1,true)
 				, user_prec init_fill=filler)
-			: abstractSheet ( length	// size of supervector
+			: selectiveSheet ( length	// size of supervector
 				, std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
 				, _orders
 				, init_fill)
@@ -54,6 +54,11 @@ namespace storage
 		void reset ( )
 		{
 			last = sheet.begin();
+		}
+		void reOrder ( boolVec_t newOrders, user_prec reInit=filler)
+		{
+			//Must be implemented
+			return;
 		}
 	protected:
 		sheet_t::iterator last;

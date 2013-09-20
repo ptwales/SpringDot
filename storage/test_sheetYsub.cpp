@@ -20,7 +20,7 @@ int main ()
 	size_t length = 10;
 	size_t width = 6;
 	storage::user_prec phil = 12.34;
-	storage::abstractSheet::boolVec_t myBoolVec(width, true);
+	storage::selectiveSheet::boolVec_t myBoolVec(width, true);
 
 	//test filler constructor
 	cout << "Test filler constructor . . . ";

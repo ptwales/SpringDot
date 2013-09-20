@@ -1,7 +1,7 @@
 Objects = sheetYsub.o
 Tests = test_twoDVec test_sheetYsub
 
-sheetYsub.o: storage/twoDVec.h storage/abstractSheet.h storage/sheetYsub.h storage/sheetYsub.cpp
+sheetYsub.o: storage/twoDVec.h storage/selectiveSheet.h storage/sheetYsub.h storage/sheetYsub.cpp
 	g++ -c storage/sheetYsub.cpp
 
 testall: $(Tests)
