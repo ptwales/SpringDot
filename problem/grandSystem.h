@@ -11,15 +11,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *
+ * GrandSystem Interface
+ * 	root class for all system classes.
+ * 	I am uncertain what it should be right now but I want it to 
+ * 	create the necessary methods and storage classes for solving
+ * 	the problem
  */
 #ifndef GRANDSYSTEM_H
 #define GRANDSYSTEM_H
 
-/*
- * Abstract root class for all systems
- *
- */
-
-namespace 
+namespace problem 
+{
+	class GrandSystem
+	{
+		//vitual voids...
+	};
+}
 
 #endif //GRANDSYSTEM_H

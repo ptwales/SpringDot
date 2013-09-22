@@ -6,12 +6,12 @@
 
 // Feel free to uncomment all but the used parent class
 
-#include <ode.h>
-#include <hamiltonian.h>
+#include <../problem/diffEq.h>
+#include <../problem/hamiltonian.h>
 
 namespace problem
 {
-	class springTest_system	:public ode, hamiltonian
+	class springTest_system	:public diffEq, hamiltonian
 	{
 		public:
 			void derivative( y_vec& y const, y_vec& y_dot );
