@@ -12,33 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef DIFFEQMETHOD_H
-#define DIFFEQMETHOD_H
+#ifndef DIFFEQMETH_H
+#define DIFFEQMETH_H
 
 #include <sheetYsub.h>
 
+using namespace storage;
+
 namespace solutions
 {
-
-	typedef void (dFunc_t) ( const y_vec&, y_vec& );
+	typedef void (dFunc_t) ( const y_vec&, y_vec&, const user_prec& );	//y, ydot, t
 
 	class diffEqMeth
 	{
 	public:
 
-		diffEqMeth ( dFunc_t& _deriveFunc, storage::selectiveSheet& _writeTo ) {
+		diffEqMeth ( dFunc_t& _deriveFunc, selectiveSheet& _writeTo
+				, const size_t _varCount, const size_t _diffPow ) 
+			: varCount(_varCount) , diffPow(_diffPow)	// because const
+		{
 			deriveFunc = _deriveFunc;
 			writeTo = _writeTo;
 		};
 
-		~diffEqMeth() {};
-
-		virtual void solve ( user_prec _dt ) = 0;
+		virtual void solve ( y_vec yInit, const user_prec tFin
+				, user_prec tStep , user_prec t=0) = 0;
 
 	protected:
-		storage::selectiveSheet &writeTo;
-		dFunc_t& deriveFunc;
+		selectiveSheet* writeTo;
+		dFunc_t* deriveFunc;
+		const size_t varCount, diffPow;
 	};
 }
 
-#endif // DIFFEQMETHOD_H
+#endif // DIFFEQMETH_H

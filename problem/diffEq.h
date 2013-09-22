@@ -27,8 +27,7 @@ public:
 
     virtual void derivative( const y_vec& y, y_vec& y_dot ) =0;
 
-    const size_t varCount;
-    const size_t derivePower;
+    const size_t varCount, diffPow;
 
 protected:
 	
