@@ -22,6 +22,9 @@
  *
  * sheet_t::iterator last;
  * In constructor last will point to the first subvector of the sheet
+ *
+ * sheetYSub can be packed vecSize times
+ * 
  */
 
 #ifndef SHEETYSUB_H
@@ -60,6 +63,7 @@ namespace storage
 			//Must be implemented
 			return;
 		}
+		size_t packLimit ( ) { return vecSize; }
 	protected:
 		sheet_t::iterator last;
 

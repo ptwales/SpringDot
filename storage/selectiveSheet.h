@@ -13,12 +13,19 @@
  * limitations under the License.
  *
  * SELECTIVE SHEET 
+ !
+ !	This abstrac class needs to be split into `packable' and `selective'
+ !  twoDVec will inherit packable
+ ! 	sheetYsub will inherit selective
+ !
  * Introduces:
  * 	std::vector<bool> orders
  *
  * and pure virtuals:
- * 	void pack(y_vec)
- * 	void clear ()
+ * 	void pack ( y_vec )
+ * 	void reset ( )
+ * 	void reOrder ( boolVec_t, user_prec reInit=filler )
+ * 	void packCount ( ) 
  * 	
  * Derived sheets are meant to be intialized as empty twoDVec with preAllocated space
  * std::vector<bool> orders; will deterimine the dimensions of the vector depending on the subclass and it must be the same size as the y_vec used
@@ -62,6 +69,7 @@ namespace storage
 			virtual void pack ( y_vec ) = 0;
 			virtual void reset ( ) = 0;
 			virtual void reOrder ( boolVec_t, user_prec reInit=filler ) = 0;
+			virtual size_t packLimit ( ) = 0;
 
 		protected:
 			boolVec_t orders;
