@@ -11,17 +11,17 @@
 
 namespace problem
 {
-	class springTest_system	:public diffEq, hamiltonian
-	{
-		public:
-			void derivative( y_vec& y const, y_vec& y_dot );
+  class springTest_system	:public diffEq, hamiltonian
+  {
+    public:
+      void derivative( y_vec& y const, y_vec& y_dot );
 
-			const size_t varCount = 1;
-			
-		private:
-			double k = 0.1;
-			double m = 1;
-	};
+      const size_t varCount = 1;
+
+    private:
+      double k = 0.1;
+      double m = 1;
+  };
 }
 
 #endif // SPRINGTEST_SYSTEM_H

@@ -17,37 +17,37 @@
 
 namespace storage
 {
-	void sheetYSub::pack ( y_vec yIn )
-	{
-		boolVec_t::iterator orderIt = orders.begin();
-		y_vec::iterator yInIt = yIn.begin();
-		y_vec::iterator yOutIt = last->begin();
+  void sheetYSub::pack ( y_vec yIn )
+  {
+    boolVec_t::iterator orderIt = orders.begin();
+    y_vec::iterator yInIt = yIn.begin();
+    y_vec::iterator yOutIt = last->begin();
 
-		if ( last == sheet.end() ) {
-			//Throw error
-			return;
-		}
+    if ( last == sheet.end() ) {
+      //Throw error
+      return;
+    }
 
-		while ( orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end() ) 
-		{
-			if ( *orderIt ) {
-				*yOutIt = *yInIt;
-				yOutIt++;
-			}
-			yInIt++;
-			orderIt++;
-		}
+    while ( orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end() ) 
+    {
+      if ( *orderIt ) {
+        *yOutIt = *yInIt;
+        yOutIt++;
+      }
+      yInIt++;
+      orderIt++;
+    }
 
-		if ( orderIt != orders.end() ) {
-			//Throw Error
-		}
-		if ( yInIt != yIn.end() ) {
-			//Throw Error
-		}
-		if ( yOutIt != last->end() ) {
-			//Throw Error
-		}
+    if ( orderIt != orders.end() ) {
+      //Throw Error
+    }
+    if ( yInIt != yIn.end() ) {
+      //Throw Error
+    }
+    if ( yOutIt != last->end() ) {
+      //Throw Error
+    }
 
-		last++;
-	}
+    last++;
+  }
 }

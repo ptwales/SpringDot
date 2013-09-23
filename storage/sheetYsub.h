@@ -35,39 +35,39 @@
 
 namespace storage 
 {
-	class sheetYSub	:public selectiveSheet 
-	{
-	public:
-		sheetYSub ( size_t length = 1
-				, boolVec_t _orders = boolVec_t(1,true)
-				, user_prec init_fill=filler)
-			: selectiveSheet ( length	// size of supervector
-				, std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
-				, _orders
-				, init_fill)
-		{
-			last = sheet.begin();
-		}
+  class sheetYSub	:public selectiveSheet 
+  {
+    public:
+      sheetYSub ( size_t length = 1
+          , boolVec_t _orders = boolVec_t(1,true)
+          , user_prec init_fill=filler)
+        : selectiveSheet ( length	// size of supervector
+            , std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
+            , _orders
+            , init_fill)
+    {
+      last = sheet.begin();
+    }
 
-		//Default Copy should be good enough
+      //Default Copy should be good enough
 
-		//Throws errors
-		void pack ( y_vec );
+      //Throws errors
+      void pack ( y_vec );
 
-		void reset ( )
-		{
-			last = sheet.begin();
-		}
-		void reOrder ( boolVec_t newOrders, user_prec reInit=filler)
-		{
-			//Must be implemented
-			return;
-		}
-		size_t packLimit ( ) { return vecSize; }
-	protected:
-		sheet_t::iterator last;
+      void reset ( )
+      {
+        last = sheet.begin();
+      }
+      void reOrder ( boolVec_t newOrders, user_prec reInit=filler)
+      {
+        //Must be implemented
+        return;
+      }
+      size_t packLimit ( ) { return vecSize; }
+    protected:
+      sheet_t::iterator last;
 
-	};
+  };
 }
 
 #endif // SHEETY_SUB

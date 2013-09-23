@@ -51,28 +51,28 @@
 
 namespace storage
 {
-	typedef std::vector<bool> boolVec_t;
+  typedef std::vector<bool> boolVec_t;
 
-	class selectiveSheet	:public twoDVec
-	{
-		public:
-			selectiveSheet ( size_t _vecSize
-					, size_t _subVecSize
-					, boolVec_t _orders
-					, user_prec init_fill=filler )
-				: twoDVec ( _vecSize
-						, _subVecSize
-						, init_fill )
-		{
-			orders = _orders;
-		}
-			virtual void pack ( y_vec ) = 0;
-			virtual void reset ( ) = 0;
-			virtual void reOrder ( boolVec_t, user_prec reInit=filler ) = 0;
-			virtual size_t packLimit ( ) = 0;
+  class selectiveSheet	:public twoDVec
+  {
+    public:
+      selectiveSheet ( size_t _vecSize
+          , size_t _subVecSize
+          , boolVec_t _orders
+          , user_prec init_fill=filler )
+        : twoDVec ( _vecSize
+            , _subVecSize
+            , init_fill )
+    {
+      orders = _orders;
+    }
+      virtual void pack ( y_vec ) = 0;
+      virtual void reset ( ) = 0;
+      virtual void reOrder ( boolVec_t, user_prec reInit=filler ) = 0;
+      virtual size_t packLimit ( ) = 0;
 
-		protected:
-			boolVec_t orders;
-	};
+    protected:
+      boolVec_t orders;
+  };
 }
 #endif // SELECTIVESHEET_H
