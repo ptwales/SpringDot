@@ -21,23 +21,23 @@
 namespace storage
 {
 
-  /*
-   * insert GMP here
-   * 	    ||
-   * 	    ||	
-   *       _||_
-   *       \  /
-   *        \/
-   */
-  typedef double user_prec;
-  typedef std::vector<user_prec> y_vec;	//If vectors don't apply this should somehow change to not a vector
-  /* 
-   * filler is the default initializer for all containers
-   * if for some reason this shouldn't be 0, leave it alone.
-   * If you are doing something weird with user_prec, then you might need to use it
-   * but then you might break other things so IDK. 
-   */
-  const static user_prec filler = 0;		
+    /*
+     * insert GMP here
+     * 	    ||
+     * 	    ||	
+     *       _||_
+     *       \  /
+     *        \/
+     */
+    typedef double user_prec;
+    typedef std::vector<user_prec> y_vec;	//If vectors don't apply this should somehow change to not a vector
+    /* 
+     * filler is the default initializer for all containers
+     * if for some reason this shouldn't be 0, leave it alone.
+     * If you are doing something weird with user_prec, then you might need to use it
+     * but then you might break other things so IDK. 
+     */
+    const static user_prec filler = 0;		
 }
 
 #endif //PRECISION_H

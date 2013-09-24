@@ -19,43 +19,49 @@
 
 namespace storage
 {
-  typedef std::vector<y_vec> sheet_t;
+    typedef std::vector<y_vec> sheet_t;
 
-  class twoDVec
-  {
-    public:
+    class twoDVec
+    {
+        public:
 
-      twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler)
-      {
-        sheet.resize( length, y_vec( height, init_fill) );
-        vecSize = length;
-        subVecSize = height;
-      }
+            twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler)
+            {
+                sheet.resize( length, y_vec( height, init_fill) );
+                vecSize = length;
+                subVecSize = height;
+            }
 
-      twoDVec ( size_t length, y_vec init_vec )
-      { 
-        sheet.resize( length, init_vec ); 
-        vecSize = length;
-        subVecSize = init_vec.size();
-      }
+            twoDVec ( size_t length, y_vec init_vec )
+            { 
+                sheet.resize( length, init_vec ); 
+                vecSize = length;
+                subVecSize = init_vec.size();
+            }
 
-      twoDVec ( const twoDVec& original )
-      { 
-        sheet = original.sheet;
-        vecSize = sheet.size();
-        subVecSize = sheet[0].size();
-      }
+            twoDVec ( const twoDVec& original )
+            { 
+                sheet = original.sheet;
+                vecSize = sheet.size();
+                subVecSize = sheet[0].size();
+            }
 
-      virtual y_vec operator [] ( size_t n )	
-      { return sheet[n]; }
+            virtual y_vec operator [] ( size_t n ) const
+            { return sheet[n]; }
 
-      size_t size() { return vecSize; }
-      size_t subSize() { return subVecSize; }
+            const user_prec get ( size_t subvec, size_t subVecEl ) const
+            { return sheet[subVec][subVecEl]; }
 
-    protected:
-      sheet_t sheet;
-      size_t vecSize, subVecSize;
-  };
+            const user_prec& at ( size_t subvec, size_t subVecEl ) const
+            { return &(sheet[subVec][subVecEl]); }
+
+            const size_t size() const { return vecSize; }
+            const size_t subSize() const { return subVecSize; }
+
+        protected:
+            sheet_t sheet;
+            size_t vecSize, subVecSize;
+    };
 }
 
 #endif //TWODVEC_H

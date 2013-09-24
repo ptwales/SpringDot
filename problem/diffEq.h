@@ -21,16 +21,16 @@
 namespace problem
 {
 
-class diffEq
-{
-public:
+    class diffEq
+    {
+        public:
 
-    virtual void derivative( const y_vec& y, y_vec& y_dot ) =0;
+            virtual void derivative( const y_vec& y, y_vec& y_dot ) =0;
 
-    const size_t varCount, diffPow;
+            const size_t varCount, diffPow;
 
-protected:
-	
-};
+        protected:
+
+    };
 }
 #endif // DIFFEQ_H

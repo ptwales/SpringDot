@@ -23,17 +23,17 @@
 
 namespace problem
 {
-class hamiltonian
-	{
-	public:
-		static const unsigned int derivePower = 2;
+    class hamiltonian
+    {
+        public:
+            static const unsigned int derivePower = 2;
 
-		virtual user_prec netEngery( y_vec& y ) =0;
+            virtual user_prec netEngery( y_vec& y ) =0;
 
-		virtual user_prec netAngMom( y_vec& y ) =0;
-		
-		virtual user_prec netLinMom( y_vec& y ) =0;
-	};
+            virtual user_prec netAngMom( y_vec& y ) =0;
+
+            virtual user_prec netLinMom( y_vec& y ) =0;
+    };
 }
 
 #endif // HAMILTONIAN_H

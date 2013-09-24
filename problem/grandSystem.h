@@ -24,10 +24,10 @@
 
 namespace problem 
 {
-	class GrandSystem
-	{
-		//vitual voids...
-	};
+    class GrandSystem
+    {
+        //vitual voids...
+    };
 }
 
 #endif //GRANDSYSTEM_H

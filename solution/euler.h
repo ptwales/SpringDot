@@ -30,45 +30,45 @@ using namespace storage;
 
 namespace solution
 {
-  class euler :public diffEqMeth
-  {
-    public:
-      void solve ( y_vec y, user_prec tFin
-          , user_prec tStep, user_prec t=0)
-      {
-        size_t leap = calcLeap ( t, tFin, tStep );
-        //Assert If t < tFin then tStep > 0
-        // or if t > tFin then tStep < 0
+    class euler :public diffEqMeth
+    {
+        public:
+            void solve ( y_vec y, user_prec tFin
+                    , user_prec tStep, user_prec t=0)
+            {
+                size_t leap = calcLeap ( t, tFin, tStep );
+                //Assert If t < tFin then tStep > 0
+                // or if t > tFin then tStep < 0
 
-        size_t vecSize = y.size();
+                size_t vecSize = y.size();
 
-        y_vec y_d ( vecSize, filler );
+                y_vec y_d ( vecSize, filler );
 
-        y_vec::iterator y_it;
-        y_vec::iterator yd_it;
+                y_vec::iterator y_it;
+                y_vec::iterator yd_it;
 
-        size_t n;
-        do {
-          writeTo->pack(y);
+                size_t n;
+                do {
+                    writeTo->pack(y);
 
-          // Sacrifice some run time for memory management
-          for ( n = 0; n < leap; n++)
-          {
-            (*deriveFunc) ( y, y_d, t );
+                    // Sacrifice some run time for memory management
+                    for ( n = 0; n < leap; n++)
+                    {
+                        (*deriveFunc) ( y, y_d, t );
 
 #ifndef BOOST_FOREACH
-            for ( y_it = y.begin(), yd_it = y_d.begin();
-                y_it < y.end(),	    yd_it < y_d.end();
-                y_it++,             yd_it++; )
-              (*y_it) += (*y_dot) * tStep;
+                        for ( y_it = y.begin(), yd_it = y_d.begin();
+                                y_it < y.end(),	    yd_it < y_d.end();
+                                y_it++,             yd_it++; )
+                            (*y_it) += (*y_dot) * tStep;
 #else
-            //BOOST FOREACH with zip_iterator
+                        //BOOST FOREACH with zip_iterator
 #endif
-            t += tStep;
-          }
-        } while ( t != tFin )
-      }
-  }
+                        t += tStep;
+                    }
+                } while ( t != tFin )
+            }
+    }
 }
 
 #endif //EULER_H
