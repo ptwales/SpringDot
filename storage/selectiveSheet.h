@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * SELECTIVE SHEET 
- !
- !	This abstrac class needs to be split into `packable' and `selective'
- !  twoDVec will inherit packable
- ! 	sheetYsub will inherit selective
- !
- * Introduces:
- * 	std::vector<bool> orders
+ * SHEETINTERFACES
  *
- * and pure virtuals:
+ * packable
+ * ======== 
+ * interfaces:
  * 	void pack ( y_vec )
  * 	void reset ( )
- * 	void reOrder ( boolVec_t, user_prec reInit=filler )
  * 	void packCount ( ) 
+ *
+ * 	Many methods will store vectors as they work their way through. The packable interface allows them to simply pass a vector to the `packable` with the `pack()` method and let the `packable` deal with how to store it.
+ *
+ * selective
+ * =========
+ * protected field:
+ * 	std::vector<bool> orders
+ * interface:
+ * 	void reOrder ( boolVec_t, user_prec reInit=filler )
  * 	
  * Derived sheets are meant to be intialized as empty twoDVec with preAllocated space
  * std::vector<bool> orders; will deterimine the dimensions of the vector depending on the subclass and it must be the same size as the y_vec used
@@ -44,19 +47,30 @@
  * 
  */
 
-#ifndef SELECTIVESHEET_H
-#define SELECTIVESHEET_H
+#ifndef SHEETINTERFACES_H
+#define SHEETINTERFACES_H
 
 #include "twoDVec.h"
 
 namespace storage
 {
-    typedef std::vector<bool> boolVec_t;
 
-    class selectiveSheet	:public twoDVec
+    // packable interface
+    class packable
     {
         public:
-            selectiveSheet ( size_t _vecSize
+            virtual void pack ( y_vec ) =0;
+            virtual void reset ( ) =0;
+            virtual size_t packLimit ( ) =0;
+            virtual bool isFull ( ) =0;
+    }
+
+    // selective interface
+    typedef std::vector<bool> boolVec_t;
+    class selective     :public twoDVec
+    {
+        public:
+            selective ( size_t _vecSize
                     , size_t _subVecSize
                     , boolVec_t _orders
                     , user_prec init_fill=filler )
@@ -66,13 +80,19 @@ namespace storage
         {
             orders = _orders;
         }
-            virtual void pack ( y_vec ) = 0;
-            virtual void reset ( ) = 0;
-            virtual void reOrder ( boolVec_t, user_prec reInit=filler ) = 0;
-            virtual size_t packLimit ( ) = 0;
-
+            virtual void reOrder ( boolVec_t newOrders, user_prec reInit=filler) =0;
+           
         protected:
             boolVec_t orders;
     };
+
+    class printable
+    {
+        public:
+            //Change this to print_To(FILE* dest=stdio...
+            virtual void printTo_stdio( char format='g', char elDelim='\t'
+                    , char vecDelim='\n') =0;
+
+    }
 }
-#endif // SELECTIVESHEET_H
+#endif // SHEETINTERFACES_H

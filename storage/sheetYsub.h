@@ -30,12 +30,12 @@
 #ifndef SHEETYSUB_H
 #define SHEETYSUB_H
 
-#include "selectiveSheet.h"
+#include "sheetInterfaces.h"
 #include <algorithm>
 
 namespace storage 
 {
-    class sheetYSub	:public selectiveSheet 
+    class sheetYSub	:public selectiveSheet, printable, packable
     {
         public:
             sheetYSub ( size_t length = 1
@@ -51,19 +51,21 @@ namespace storage
 
             //Default Copy should be good enough
 
+            /*  PACKABLE INTERFACE */
             //Throws errors
             void pack ( y_vec );
+            void reset ( )          { last = sheet.begin(); }
+            size_t packLimit ( )    { return vecSize; }
+            bool isFull ( )         { return ( last == sheet.end() ); }
 
-            void reset ( )
-            {
-                last = sheet.begin();
-            }
-            void reOrder ( boolVec_t newOrders, user_prec reInit=filler)
-            {
-                //Must be implemented
-                return;
-            }
-            size_t packLimit ( ) { return vecSize; }
+            /* selective interface */
+            void reOrder ( boolVec_t newOrders, user_prec reInit=filler);
+
+           /* printable interface */ 
+            
+            void printTo_stdio ( char format='g', char elDelim='\t'
+                    , char vecDelim='\n');
+
         protected:
             sheet_t::iterator last;
 

@@ -50,4 +50,23 @@ namespace storage
 
         last++;
     }
+
+    void sheetYSub::reOrder ( boolVec_t newOrders, user_prec reInit=filler);
+    {
+        //Must be implemented in cpp
+        return;
+    }
+
+    void sheetYSub::printTo_stdio ( char format='g', char elDelim='\t'
+            , char vecDelim='\n');
+    {
+        char pFormat[4] = {'%', format, elDelim, '\0'};
+        y_vec::iterator x;
+        for ( y_vec::iterator = sheet.begin(); y < sheet.end(); y++ ) {
+            for (x = y->begin(); x < y->end(); x++ ) {
+                printf(pFormat, (*x));
+            }
+            putchar(vecDelim);
+        }
+    }
 }

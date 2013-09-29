@@ -25,42 +25,41 @@ namespace storage
     {
         public:
 
-            twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler)
+            twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler) 
+                : vecSize(length), subVecSize(height)
             {
                 sheet.resize( length, y_vec( height, init_fill) );
-                vecSize = length;
-                subVecSize = height;
             }
 
             twoDVec ( size_t length, y_vec init_vec )
+                : vecSize(length), subVecSize(init_vec.size())
             { 
                 sheet.resize( length, init_vec ); 
-                vecSize = length;
-                subVecSize = init_vec.size();
             }
 
             twoDVec ( const twoDVec& original )
+                : vecSize(original.vecSize), subVecSize(original.subVecSize)
             { 
                 sheet = original.sheet;
-                vecSize = sheet.size();
-                subVecSize = sheet[0].size();
             }
 
             virtual y_vec operator [] ( size_t n ) const
             { return sheet[n]; }
 
-            const user_prec get ( size_t subvec, size_t subVecEl ) const
+            const user_prec get ( size_t subVec, size_t subVecEl ) const
             { return sheet[subVec][subVecEl]; }
 
-            const user_prec& at ( size_t subvec, size_t subVecEl ) const
+            /*
+            user_prec& at ( size_t subVec, size_t subVecEl )
             { return &(sheet[subVec][subVecEl]); }
+            */
 
-            const size_t size() const { return vecSize; }
-            const size_t subSize() const { return subVecSize; }
+            //const size_t size() { return vecSize; }
+            //const size_t subSize() { return subVecSize; }
 
+            const size_t vecSize, subVecSize;
         protected:
             sheet_t sheet;
-            size_t vecSize, subVecSize;
     };
 }
 

@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 Objects = sheetYsub.o
 Tests = test_twoDVec test_sheetYsub
 TestDir = test_bin
