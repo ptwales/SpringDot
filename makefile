@@ -3,13 +3,13 @@ Objects = sheetYsub.o
 Tests = test_twoDVec test_sheetYsub
 TestDir = test_bin
 
-sheetYsub.o: storage/twoDVec.h storage/selectiveSheet.h storage/sheetYsub.h storage/sheetYsub.cpp
+sheetYsub.o: storage/twoDVec.hpp storage/selectiveSheet.hpp storage/sheetYsub.hpp storage/sheetYsub.cpp
 	$(CC) -c storage/sheetYsub.cpp
 
 testall: $(Tests)
 
 # define folder as variable later
-test_twoDVec: storage/twoDVec.h storage/test_twoDVec.cpp
+test_twoDVec: storage/twoDVec.hpp storage/test_twoDVec.cpp
 	$(CC) storage/test_twoDVec.cpp -o test_twoDVec
 	./test_twoDVec
 

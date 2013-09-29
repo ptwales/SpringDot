@@ -25,11 +25,16 @@ namespace storage
      * insert GMP here
      * 	    ||
      * 	    ||	
-     *       _||_
-     *       \  /
-     *        \/
+     *     _||_
+     *     \  /
+     *      \/
      */
     typedef double user_prec;
+
+    /*
+     * whatever you do to this, it needs to be of type user_prec and have the same interfaces as std::vector.
+     * _e.g._ y_vec::iterator happens alot
+     */
     typedef std::vector<user_prec> y_vec;	//If vectors don't apply this should somehow change to not a vector
     /* 
      * filler is the default initializer for all containers
