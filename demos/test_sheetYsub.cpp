@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../storage/sheetYsub.h"
+#include "../storage/sheetYsub.hpp"
 
 
 using namespace std;
@@ -9,8 +9,8 @@ int main ()
     cout << "Test Default Constructor . . . ";
     storage::sheetYSub *test = new storage::sheetYSub;
     cout << ( ( (*test)[0][0] == storage::filler 
-                && test->size() == 1 
-                && test->subSize() == 1 )? 
+                && test->vecSize == 1 
+                && test->subVecSize == 1 )? 
             "pass \n" : "fail \n" );
 
     cout << "Test Destructor . . . ";
@@ -25,7 +25,7 @@ int main ()
     //test filler constructor
     cout << "Test filler constructor . . . ";
     test = new storage::sheetYSub(length, myBoolVec );
-    cout << ( (	test->size() == length
+    cout << ( (	test->vecSize == length
                 && (*test)[length-1].size() == width
                 && (*test)[length-1][width-1] == storage::filler)? 
             "pass \n" : "fail \n" );
@@ -47,7 +47,7 @@ int main ()
         myBoolVec[s] = false;
 
     test = new storage::sheetYSub( length, myBoolVec, phil );
-    cout << ( ( test->subSize() == width - width/2 )?
+    cout << ( ( test->subVecSize == width - width/2 )?
             "pass \n" : "fail \n" );
 
     //test packing
@@ -59,14 +59,8 @@ int main ()
     test->pack(myVec);
 
     cout << endl;
-    for ( size_t y = 0; y < test->subSize(); y++ )
-    {
-        for ( size_t x = 0; x < length; x++ )
-        {
-            cout << (*test)[x][y] << "\t";
-        }
-        cout << endl;
-    }
+
+    test->printTo();
 
     delete test;
 

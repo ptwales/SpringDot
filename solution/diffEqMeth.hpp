@@ -22,7 +22,7 @@
 #define DIFFEQMETH_H
 
 #include <algorithim>
-#include <sheetYsub.h>
+#include "../storage/sheetYsub.h"
 
 using namespace storage;
 

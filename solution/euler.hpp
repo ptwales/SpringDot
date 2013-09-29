@@ -24,7 +24,7 @@
 #define EULER_H
 
 //will need to rename this.
-#include "diffEqMeth.h"
+#include "diffEqMeth.hpp"
 
 using namespace storage;
 

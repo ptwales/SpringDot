@@ -50,7 +50,8 @@
 #ifndef SHEETINTERFACES_H
 #define SHEETINTERFACES_H
 
-#include "twoDVec.h"
+#include "twoDVec.hpp"
+#include <stdio.h>
 
 namespace storage
 {
@@ -63,7 +64,7 @@ namespace storage
             virtual void reset ( ) =0;
             virtual size_t packLimit ( ) =0;
             virtual bool isFull ( ) =0;
-    }
+    };
 
     // selective interface
     typedef std::vector<bool> boolVec_t;
@@ -89,10 +90,9 @@ namespace storage
     class printable
     {
         public:
-            //Change this to print_To(FILE* dest=stdio...
-            virtual void printTo_stdio( char format='g', char elDelim='\t'
+            virtual void printTo( FILE* dest=stdout, char format='g', char elDelim='\t'
                     , char vecDelim='\n') =0;
 
-    }
+    };
 }
 #endif // SHEETINTERFACES_H

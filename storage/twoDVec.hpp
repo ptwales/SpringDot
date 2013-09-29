@@ -15,7 +15,7 @@
 #ifndef TWODVEC_H
 #define TWODVEC_H
 
-#include "../precision.h"
+#include "../precision.hpp"
 
 namespace storage
 {

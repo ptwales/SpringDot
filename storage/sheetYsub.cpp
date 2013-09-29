@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "sheetYsub.h"
+#include "sheetYsub.hpp"
 
 namespace storage
 {
@@ -51,20 +51,20 @@ namespace storage
         last++;
     }
 
-    void sheetYSub::reOrder ( boolVec_t newOrders, user_prec reInit=filler);
+    void sheetYSub::reOrder ( boolVec_t newOrders, user_prec reInit)
     {
         //Must be implemented in cpp
         return;
     }
 
-    void sheetYSub::printTo_stdio ( char format='g', char elDelim='\t'
-            , char vecDelim='\n');
+    void sheetYSub::printTo( FILE* dest, char format, char elDelim
+            , char vecDelim )
     {
         char pFormat[4] = {'%', format, elDelim, '\0'};
         y_vec::iterator x;
-        for ( y_vec::iterator = sheet.begin(); y < sheet.end(); y++ ) {
+        for ( sheet_t::iterator y = sheet.begin(); y < sheet.end(); y++ ) {
             for (x = y->begin(); x < y->end(); x++ ) {
-                printf(pFormat, (*x));
+                fprintf(dest, pFormat, (*x));
             }
             putchar(vecDelim);
         }

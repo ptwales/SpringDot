@@ -16,7 +16,7 @@
 #define DIFFEQ_H
 
 #include <vector>
-#include "precision.h"
+#include "precision.hpp"
 
 namespace problem
 {

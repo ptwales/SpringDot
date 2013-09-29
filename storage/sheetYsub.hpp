@@ -30,18 +30,18 @@
 #ifndef SHEETYSUB_H
 #define SHEETYSUB_H
 
-#include "sheetInterfaces.h"
+#include "sheetInterfaces.hpp"
 #include <algorithm>
 
 namespace storage 
 {
-    class sheetYSub	:public selectiveSheet, printable, packable
+    class sheetYSub	:public selective, printable, packable
     {
         public:
             sheetYSub ( size_t length = 1
                     , boolVec_t _orders = boolVec_t(1,true)
                     , user_prec init_fill=filler)
-                : selectiveSheet ( length	// size of supervector
+                : selective ( length	// size of supervector
                         , std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
                         , _orders
                         , init_fill)
@@ -63,7 +63,7 @@ namespace storage
 
            /* printable interface */ 
             
-            void printTo_stdio ( char format='g', char elDelim='\t'
+            void printTo( FILE* dest=stdout, char format='g', char elDelim='\t'
                     , char vecDelim='\n');
 
         protected:
