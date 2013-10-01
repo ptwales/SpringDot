@@ -1,4 +1,4 @@
-CC = c++
+CC = g++
 Objects = sheetYsub.o springTest_system.o explicitEuler.o
 Tests = test_sheetYsub test_spring
 TestDir = test_bin

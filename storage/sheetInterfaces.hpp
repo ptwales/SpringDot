@@ -74,9 +74,8 @@ namespace storage
             selective ( size_t _vecSize, size_t _subVecSize
                     , boolVec_t _orders, user_prec init_fill=filler )
                 : twoDVec ( _vecSize, _subVecSize, init_fill )
-        {
-            orders = _orders;
-        }
+            { orders = _orders; }
+
             virtual void reOrder ( boolVec_t newOrders, user_prec reInit=filler) =0;
            
         protected:

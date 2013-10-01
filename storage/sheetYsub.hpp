@@ -42,9 +42,7 @@ namespace storage
                     , user_prec init_fill=filler )
                 : selective ( length, std::count( _orders.begin(), _orders.end(), true )	// size of subvectors
                         , _orders, init_fill )
-        {
-            last = sheet.begin();
-        }
+            { last = sheet.begin(); }
 
             //Default Copy should be good enough
 
@@ -58,8 +56,8 @@ namespace storage
             /* selective interface */
             void reOrder( boolVec_t newOrders, user_prec reInit=filler );
 
-           /* printable interface */ 
-            
+            /* printable interface */ 
+
             void printTo( FILE* dest=stdout, char format='g', char elDelim='\t'
                     , char vecDelim='\n');
 
