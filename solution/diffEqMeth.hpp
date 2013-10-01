@@ -21,8 +21,8 @@
 #ifndef DIFFEQMETH_H
 #define DIFFEQMETH_H
 
-#include <algorithim>
-#include "../storage/sheetYsub.h"
+//#include <algorithm>
+#include "../problem/diffEq.hpp"
 
 using namespace storage;
 
@@ -33,7 +33,7 @@ namespace solutions
      * A dFunc_t calculates y'(t) = f( y(t), t )
      * arguments are ( y(t), y'(t), t )
      */
-    typedef void (dFunc_t) ( const y_vec&, y_vec&, const user_prec& );	
+//    typedef problem::dFunc_t* dFunc_p;
 
     class diffEqMeth
     {
@@ -45,31 +45,27 @@ namespace solutions
              * the container instead of returned to the system to write to 
              * the container.
              *
-             ! selectiveSheet arg is temporary and will be replaced
+             ! packable arg is temporary and will be replaced
              ! with some `packable' interface.
              */
-            diffEqMeth ( dFunc_t& _deriveFunc, selectiveSheet& _writeTo )
-            {
-                deriveFunc = &_deriveFunc;
-                writeTo = &_writeTo;
-                //Find the size of writeTo
-            };
+            diffEqMeth ( problem::diffEq& _system, problem::dFunc_p _deriveFuncP, packable& _writeTo )
+                : system(&_system), deriveFuncP(_deriveFuncP), writeTo(&_writeTo) {}
 
             /*
              * solve y(t) from t0 to tF with a step of tStep where y(t0) = yInit
              */
-            virtual void solve ( y_vec yInit, user_prec tF
+            virtual void solve ( y_vec& yInit, user_prec tF
                     ,user_prec tStep , user_prec tInit=0) = 0;
 
         protected:
             //Don't know if this is the right way to do it.
-            class wrongWay_e :public exception {
+            class wrongWay_e :public std::exception {
                 const char* what() const throw() {
                     return "(tF - t0)/dt < 0 \n Check signs";
                 }
             } wrongWay;
 
-            class noSteps_e :public exception {
+            class noSteps_e :public std::exception {
                 const char* what() const throw() {
                     return "(tF - t0)/dt < 1 \n Step size too large for range";
                 }
@@ -83,11 +79,12 @@ namespace solutions
                 if ( stepCount < 0 )	{ throw wrongWay;	exit(1); }
                 if ( stepCount == 0 )	{ throw noSteps;	exit(1); }
 
-                return = (size_t) (stepCount/limit);
+                return (size_t) (stepCount/limit);
             }
 
-            selectiveSheet* writeTo;
-            dFunc_t* deriveFunc;
+            packable* writeTo;
+            problem::diffEq* system;
+            problem::dFunc_p deriveFuncP;
     };
 }
 

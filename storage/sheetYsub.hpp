@@ -35,16 +35,13 @@
 
 namespace storage 
 {
-    class sheetYSub	:public selective, printable, packable
+    class sheetYSub	:public selective, public printable, public packable
     {
         public:
-            sheetYSub ( size_t length = 1
-                    , boolVec_t _orders = boolVec_t(1,true)
-                    , user_prec init_fill=filler)
-                : selective ( length	// size of supervector
-                        , std::count ( _orders.begin(), _orders.end(), true )	// size of subvectors
-                        , _orders
-                        , init_fill)
+            sheetYSub( size_t length = 1, boolVec_t _orders = boolVec_t(1,true)
+                    , user_prec init_fill=filler )
+                : selective ( length, std::count( _orders.begin(), _orders.end(), true )	// size of subvectors
+                        , _orders, init_fill )
         {
             last = sheet.begin();
         }
@@ -53,13 +50,13 @@ namespace storage
 
             /*  PACKABLE INTERFACE */
             //Throws errors
-            void pack ( y_vec );
-            void reset ( )          { last = sheet.begin(); }
-            size_t packLimit ( )    { return vecSize; }
-            bool isFull ( )         { return ( last == sheet.end() ); }
+            void pack( y_vec );
+            void reset( )          { last = sheet.begin(); }
+            size_t packLimit( )    { return vecSize; }
+            bool isFull( )         { return ( last == sheet.end() ); }
 
             /* selective interface */
-            void reOrder ( boolVec_t newOrders, user_prec reInit=filler);
+            void reOrder( boolVec_t newOrders, user_prec reInit=filler );
 
            /* printable interface */ 
             

@@ -1,7 +1,9 @@
 #ignore object files
-#ignore object files
 	*.o
 #ignore autosaves
 	*~
 #ignore testBuilds
-	test_*
+        test_*
+#ignore OSX DS_STORE
+        .DS_Store
+      

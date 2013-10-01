@@ -18,21 +18,26 @@
 
 // Feel free to uncomment all but the used parent class
 
-#include <../problem/diffEq.h>
-#include <../problem/hamiltonian.h>
+#include "../problem/diffEq.hpp"
 
 namespace problem
 {
-    class springTest_system	:public diffEq, hamiltonian
+    class springTest_system	:public diffEq
     {
         public:
-            void derivative( y_vec& y const, y_vec& y_dot );
+            springTest_system ( storage::user_prec _k, storage::user_prec _m )
+                : diffEq (1,2) {
+                    k = _k;
+                    m = _m;
+                }
+            ~springTest_system() {}
 
-            const size_t varCount = 1;
+            void derivative ( const storage::y_vec&, storage::y_vec&, const storage::user_prec& );
+
 
         private:
-            double k = 0.1;
-            double m = 1;
+            double k;
+            double m;
     };
 }
 

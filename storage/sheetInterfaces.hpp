@@ -71,13 +71,9 @@ namespace storage
     class selective     :public twoDVec
     {
         public:
-            selective ( size_t _vecSize
-                    , size_t _subVecSize
-                    , boolVec_t _orders
-                    , user_prec init_fill=filler )
-                : twoDVec ( _vecSize
-                        , _subVecSize
-                        , init_fill )
+            selective ( size_t _vecSize, size_t _subVecSize
+                    , boolVec_t _orders, user_prec init_fill=filler )
+                : twoDVec ( _vecSize, _subVecSize, init_fill )
         {
             orders = _orders;
         }

@@ -1,24 +1,34 @@
 CC = c++
-Objects = sheetYsub.o
-Tests = test_twoDVec test_sheetYsub
+Objects = sheetYsub.o springTest_system.o explicitEuler.o
+Tests = test_sheetYsub test_spring
 TestDir = test_bin
 
+# OBJECTS
+# =========
 sheetYsub.o: storage/twoDVec.hpp storage/sheetInterfaces.hpp storage/sheetYsub.hpp storage/sheetYsub.cpp
 	$(CC) -c storage/sheetYsub.cpp
 
-testall: $(Tests)
+## SOLUTION OBJECTS
+## ==================
+explicitEuler.o: problem/diffEq.hpp solution/diffEqMeth.hpp solution/explicitEuler.hpp solution/explicitEuler.cpp
+	$(CC) -c solution/explicitEuler.cpp
 
-# define folder as variable later
-test_twoDVec: storage/twoDVec.hpp demos/test_twoDVec.cpp
-	$(CC) demos/test_twoDVec.cpp -o test_twoDVec
-	./test_twoDVec
+## DEMO OBJECTS
+## ==============
+springTest_system.o: problem/diffEq.hpp demos/springTest_system.hpp demos/springTest_system.cpp
+	$(CC) -c demos/springTest_system.cpp
+
+# DEMOS
+# ========
+testall: $(Tests)
 
 test_sheetYsub: demos/test_sheetYsub.cpp sheetYsub.o 
 	$(CC) demos/test_sheetYsub.cpp sheetYsub.o -o test_sheetYsub
 	./test_sheetYSub
 
+test_spring: sheetYsub.o springTest_system.o explicitEuler.o demos/springTest.cpp
+	$(CC) demos/springTest.cpp sheetYsub.o springTest_system.o explicitEuler.o -o test_spring
+	./test_spring
+
 clean:
 	rm $(Objects) $(Tests)
-
-
-

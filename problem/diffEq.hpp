@@ -16,21 +16,25 @@
 #define DIFFEQ_H
 
 #include <vector>
-#include "precision.hpp"
+#include "../storage/sheetInterfaces.hpp"
 
 namespace problem
 {
+    typedef void (dFunc_t) ( const storage::y_vec&, storage::y_vec&, const storage::user_prec& );	
 
     class diffEq
     {
         public:
+            diffEq(size_t _varCount, size_t _diffPow) 
+                : varCount(_varCount), diffPow(_diffPow) {
+            }
 
-            virtual void derivative( const y_vec& y, y_vec& y_dot ) =0;
+            virtual void derivative ( const storage::y_vec&, storage::y_vec&, const storage::user_prec& ) =0;
 
-            const size_t varCount, diffPow;
-
-        protected:
+            const size_t varCount;
+            const size_t diffPow;
 
     };
+    typedef void (diffEq::*dFunc_p) ( const storage::y_vec&, storage::y_vec&, const storage::user_prec& );	
 }
 #endif // DIFFEQ_H

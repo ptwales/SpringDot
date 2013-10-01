@@ -33,6 +33,8 @@ mySystem.solution.solve( tFinal, dt );	// ( unsinged int, double )
 ##License
 This project is licensed using the Apache v2.0 license.  Most files are marked accordingly with the Apache license.  Any file not marked with the Apache license still carries the same license.
 ##GOALS
+####Good lord
+Why is `y_vec` an `std::vector` and not an `std::array`?  Get on that...
 
 ###Storage
 - Make `packable` interface from `selective sheet`
@@ -40,8 +42,7 @@ This project is licensed using the Apache v2.0 license.  Most files are marked a
 	* `selectiveSheet` still inherits `twoDVec`
 - Implement single vector storage so if we ever use only one varible we don't have one element subvectors
 - Make sheetElSub
-- Recreate above classes using arrays instead of `std::vector`
-	* Test if there is a difference
+
 
 ###Methods 
 - Decide heirarchy for Ordered and Partial Differential Equations. (ODEs, and PDEs)
