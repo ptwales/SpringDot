@@ -8,7 +8,7 @@ This doesn't seem like much but what they will get for free is inherited solutio
 
 ###Example
 Example system for an ideal spring connecting two equal, gravitationally attracted masses.
-__LATER__
+__LATER__ see `demo/springTest.cpp` for working version of implementation.
 <!--```CPP
     class springTest_system	:public ode, hamiltonian
     {
@@ -37,35 +37,34 @@ This project is licensed using the Apache v2.0 license.  Most files are marked a
 Why is `y_vec` an `std::vector` and not an `std::array`?  Get on that...
 
 ###Storage
-- Make `packable` interface from `selective sheet`
-	* `twoDVec` inherits `packable`
-	* `selectiveSheet` still inherits `twoDVec`
+- Rename this `Containters`
+- New:
+  * `twoDVec` -> (interface) `selective` -> `sheetYSub`
+  * (interfaces) {`packable`, `printable`} -> `sheetYSub` (yes multiple inheritance)
+- Change `printable` to `streamable`
+  * `streamable` Containers return a null terminated character stream of elements in whatever order they want.
+    + _eg_ `sheetYSub` would stream differently than `sheetElSub`.
+  * `IO` class receives the stream and does what it wants with it.
+    + print to file (actual or std{out,err,log}.
+    + re create `IO` class.
 - Implement single vector storage so if we ever use only one varible we don't have one element subvectors
-- Make sheetElSub
-
+- Make sheetElSub.
 
 ###Methods 
 - Decide heirarchy for Ordered and Partial Differential Equations. (ODEs, and PDEs)
-	* ODE vs PDE 
-	  $ Difference is in dFunc_t which is determined by the system. Implementation wise, methods are ignorant of whether the system is an ODE or PDE.
-	* Explicit vs Implicit
-	  $ Need to pass error or tolerance arguments
-	   % special needs for hamiltonian systems
+  * ODE vs PDE 
+    + Difference is in dFunc_t which is determined by the system. Implementation wise, methods are ignorant of whether the system is an ODE or PDE as that is done in the `derivative` function.
+  * Explicit vs Implicit
+    + Need to pass error or tolerance arguments
+      - special needs for hamiltonian systems
 - Use variants of Euler's method for testing.
 - Use BOOST FOREACH with zip iterators
 
 ###Systems
 - Finish Methods
-- Get that demo up
+- Get that demo up DONE
 
 ##Optimizations
-
-###Storage
-- selective storage (Don't store every variable)
-
-###Methods
-- leap packing: Pack to the storage every `leap` steps.  Allows for finer precision time steps without using memory by storing every step.  Using too large of a `leap` can cause issues such as aliasing.  Also trades over head of packing everystep for counting when to pack and then pack then.
-- Use boost for each with zip iterators (to do)
 
 ##Possible Applications
 
@@ -75,6 +74,6 @@ Why is `y_vec` an `std::vector` and not an `std::array`?  Get on that...
 - Error and Performance Analysis
 
 ###Parameter space plotter
-First complicated application
-Compare with senior thesis for performance
+- First complicated application
+- Compare with senior thesis for performance
 
