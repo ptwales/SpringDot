@@ -17,25 +17,22 @@
 #define	PRECISION_H
 
 #include <vector>
+#include <stdlib.h>
 
 namespace storage
 {
 
     /*
-     * insert GMP here
-     * 	    ||
-     * 	    ||	
-     *     _||_
-     *     \  /
-     *      \/
+     * SpringDot uses global precision
      */
     typedef double user_prec;
 
     /*
-     * whatever you do to this, it needs to be of type user_prec and have the same interfaces as std::vector.
-     * _e.g._ y_vec::iterator happens alot
+     * whatever you do to this, it needs to be of type user_prec and have XX::iterator
      */
-    typedef std::vector<user_prec> y_vec;	//If vectors don't apply this should somehow change to not a vector
+    
+    typedef std::vector<user_prec> y_vec;
+
     /* 
      * filler is the default initializer for all containers
      * if for some reason this shouldn't be 0, leave it alone.

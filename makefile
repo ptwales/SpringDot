@@ -1,4 +1,6 @@
-CC = g++
+CppC = g++
+FLAGS = -std=c++11 -stdlib=libc++
+CC = $(CppC) $(FLAGS)
 Objects = sheetYsub.o springTest_system.o explicitEuler.o
 Tests = test_sheetYsub test_spring
 TestDir = test_bin

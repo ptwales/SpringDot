@@ -76,8 +76,14 @@ namespace solutions
                 size_t limit = writeTo->packLimit();
                 int stepCount = (stop - start)/step;
 
-                if ( stepCount < 0 )	{ throw wrongWay;	exit(1); }
-                if ( stepCount == 0 )	{ throw noSteps;	exit(1); }
+                if ( stepCount < 0 ) { 
+                    throw wrongWay;
+                    exit(EXIT_FAILURE); 
+                }
+                if ( stepCount == 0 ) { 
+                    throw noSteps;
+                    exit(EXIT_FAILURE);
+                }
 
                 return (size_t) (stepCount/limit);
             }
