@@ -1,6 +1,8 @@
-Numerical Method Library 
+Numerical Non-Linear Computation Library
 ============
-Name needs work.. This library aims to provide simple templates for creating programs to solve numerical systems.  Currently, only methods used to solve differential equations are being implemented.  But once things get working other problems will be added.
+_This project is currently dead as I want to merge with, or at least use containers from, far more established projects_
+
+This library aims to provide simple templates for creating programs to solve numerical systems.  Currently, only methods used to solve differential equations are being implemented.  But once things get working other problems will be added.
 ##Usage
 Users will need to define their own system subclass of the available systems classes and define the necessary fields and any inherited pure virtual functions as needed.  Prepared applications might be developed later but until then the user will need to write their own applications with an instance of their defined system object.
 
