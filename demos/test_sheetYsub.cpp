@@ -1,21 +1,22 @@
 #include <iostream>
 #include "../storage/sheetYsub.hpp"
 
+void printTest( bool condition ) {
+    std::cout << ( condition ? "pass" : "fail" ) << std::endl;
+}
 
-using namespace std;
 int main ()
 {
     //test default constructor
-    cout << "Test Default Constructor . . . ";
+    std::cout << "Test Default Constructor . . . ";
     storage::sheetYSub *test = new storage::sheetYSub;
-    cout << ( ( (*test)[0][0] == storage::filler 
+    printTest( (*test)[0][0] == storage::filler 
                 && test->vecSize == 1 
-                && test->subVecSize == 1 )? 
-            "pass \n" : "fail \n" );
+                && test->subVecSize == 1 );
 
-    cout << "Test Destructor . . . ";
+    std::cout << "Test Destructor . . . ";
     delete test;
-    cout << "pass \n";
+    std::cout << "pass \n";
 
     size_t length = 10;
     size_t width = 6;
@@ -23,35 +24,31 @@ int main ()
     storage::boolVec_t myBoolVec(width, true);
 
     //test filler constructor
-    cout << "Test filler constructor . . . ";
+    std::cout << "Test filler constructor . . . ";
     test = new storage::sheetYSub(length, myBoolVec );
-    cout << ( (	test->vecSize == length
-                && (*test)[length-1].size() == width
-                && (*test)[length-1][width-1] == storage::filler)? 
-            "pass \n" : "fail \n" );
+    printTest( test->vecSize == length
+               && (*test)[length-1].size() == width
+               && (*test)[length-1][width-1] == storage::filler);
     delete test;
 
     //test element constructor
-    cout << "Test element constructor . . . ";
+    std::cout << "Test element constructor . . . ";
     test = new storage::sheetYSub(length
             , vector<bool>( true,width )
             , phil );
-    cout << ( ( (*test)[0][0] == phil )?
-            "pass \n" : "fail \n" );
+    printTest( (*test)[0][0] == phil );
     delete test;
 
     //test vector constructor
-
-    cout << "Test boolean constructor . . . ";
+    std::cout << "Test boolean constructor . . . ";
     for ( size_t s = 0; s < width/2; s++) 
         myBoolVec[s] = false;
 
     test = new storage::sheetYSub( length, myBoolVec, phil );
-    cout << ( ( test->subVecSize == width - width/2 )?
-            "pass \n" : "fail \n" );
+    printTest( test->subVecSize == width - width/2 );
 
     //test packing
-    cout << "Test packing . . . ";
+    std::cout << "Test packing . . . ";
     storage::y_vec myVec;
     for ( int n = 1; n <= width; n++ ) 
         myVec.push_back(n);
@@ -63,7 +60,6 @@ int main ()
     test->printTo();
 
     delete test;
-
 
     return EXIT_SUCCESS;
 }
