@@ -19,38 +19,42 @@
 
 namespace storage
 {
-    typedef std::vector<y_vec> sheet_t;
 
+    /*
+     * Base class for 2D vectors.  Use as storage for remembering solutions.
+     */
+    template<class T>
     class twoDVec
     {
+        typedef std::vector<T> y_vec;
+        typedef std::vector<y_vec> sheet_t;
         public:
-
-            twoDVec ( size_t length=1, size_t height=1, user_prec init_fill=filler) 
+            twoDVec(size_t length=1, size_t height=1, user_T init_fill=0) 
                 : vecSize(length), subVecSize(height)
             {
-                sheet.resize( length, y_vec( height, init_fill) );
+                sheet.resize(length, y_vec( height, init_fill));
             }
 
-            twoDVec ( size_t length, y_vec init_vec )
+            twoDVec(size_t length, y_vec init_vec)
                 : vecSize(length), subVecSize(init_vec.size())
             { 
-                sheet.resize( length, init_vec ); 
+                sheet.resize(length, init_vec); 
             }
 
-            twoDVec ( const twoDVec& original )
+            twoDVec(const twoDVec& original)
                 : vecSize(original.vecSize), subVecSize(original.subVecSize)
             { 
                 sheet = original.sheet;
             }
 
-            virtual y_vec operator [] ( size_t n ) const
-            { return sheet[n]; }
+            virtual y_vec operator [] (size_t n) const
+            {return sheet[n];}
 
-            const user_prec get ( size_t subVec, size_t subVecEl ) const
-            { return sheet[subVec][subVecEl]; }
+            const T get(size_t subVec, size_t subVecEl) const
+            {return sheet[subVec][subVecEl];}
 
             /*
-            user_prec& at ( size_t subVec, size_t subVecEl )
+            user_T& at ( size_t subVec, size_t subVecEl )
             { return &(sheet[subVec][subVecEl]); }
             */
 
@@ -58,6 +62,7 @@ namespace storage
             //const size_t subSize() { return subVecSize; }
 
             const size_t vecSize, subVecSize;
+
         protected:
             sheet_t sheet;
     };

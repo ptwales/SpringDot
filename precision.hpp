@@ -11,6 +11,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * TODO:
+ *  Use templates and not global precision
+ *  In short, nullify this file!
  */
 
 #ifndef PRECISION_H
@@ -25,13 +29,13 @@ namespace storage
     /*
      * SpringDot uses global precision
      */
-    typedef double user_prec;
+//    typedef double user_prec;
 
     /*
      * whatever you do to this, it needs to be of type user_prec and have XX::iterator
      */
     
-    typedef std::vector<user_prec> y_vec;
+    //typedef std::vector<user_prec> y_vec;
 
     /* 
      * filler is the default initializer for all containers
@@ -39,7 +43,7 @@ namespace storage
      * If you are doing something weird with user_prec, then you might need to use it
      * but then you might break other things so IDK. 
      */
-    const static user_prec filler = 0;		
+    //const static user_prec filler = 0;		
 }
 
 #endif //PRECISION_H

@@ -57,26 +57,29 @@ namespace storage
 {
 
     // packable interface
+    template<class T>
     class packable
     {
         public:
-            virtual void pack ( y_vec ) =0;
-            virtual void reset ( ) =0;
-            virtual size_t packLimit ( ) =0;
-            virtual bool isFull ( ) =0;
+            virtual void pack(std::vector<T>) =0;
+            virtual void reset() =0;
+            virtual size_t packLimit() =0;
+            virtual bool isFull() =0;
     };
 
     // selective interface
     typedef std::vector<bool> boolVec_t;
-    class selective     :public twoDVec
+
+    template<class T>
+    class selective :public twoDVec<T>
     {
         public:
-            selective ( size_t _vecSize, size_t _subVecSize
-                    , boolVec_t _orders, user_prec init_fill=filler )
-                : twoDVec ( _vecSize, _subVecSize, init_fill )
-            { orders = _orders; }
+            selective(size_t Size, size_t subSize, 
+                      boolVec_t Orders, T init_fill=0)
+                : twoDVec<T>(Size, subSize, init_fill)
+            {orders = Orders;}
 
-            virtual void reOrder ( boolVec_t newOrders, user_prec reInit=filler) =0;
+            virtual void reOrder(boolVec_t newOrders, T reInit=filler) =0;
            
         protected:
             boolVec_t orders;
@@ -85,9 +88,10 @@ namespace storage
     class printable
     {
         public:
-            virtual void printTo( FILE* dest=stdout, char format='g', char elDelim='\t'
-                    , char vecDelim='\n') =0;
-
+            virtual void printTo(FILE* dest=stdout,
+                                 char format='g',
+                                 char elDelim='\t',
+                                 char vecDelim='\n') =0;
     };
 }
 #endif // SHEETINTERFACES_H

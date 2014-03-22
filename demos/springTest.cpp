@@ -15,6 +15,8 @@
 
 #include <iostream>     //cout
 #include <unistd.h>     //getopt()
+#include <stdexcept>
+#include <string>
 
 #include "springTest_system.hpp"
 #include "../solution/explicitEuler.hpp"
@@ -33,7 +35,7 @@ struct Controls_s
 
 static const char *optString = "k:m:x:v:t:T:d:c:f:h?";
 
-void display_usage( void )
+void display_usage(void)
 {
     std::cout << "Hooke's law spring demo for springDot \n\
         \n USAGE:\
@@ -99,35 +101,31 @@ int main( int argc, char* argv[])
                 display_usage();
                 break;
             default:
-                std::cout << "Default Case reached when reading Options \n\
-                    This might help: opt = " << opt << ", optarg = " << optarg << std::endl;
+                std::string unknownArgMsg("Default Case reached when reading Options \n");
+                std::string unknownArgMsg("This might help: opt = ");
+                unknownArgMsg.push_back(opt);
+                unknownArgMsg.push_back(", optarg = " );
+                unknownArgMsg.push_back(optarg);
+                throw std::invalid_argument(unknownArgMsg);
                 return EXIT_FAILURE;
                 break;
         }
-        opt = getopt(argc, argv, optString);
+        opt = getopt( argc, argv, optString );
     }
-
     problem::springTest_system mySystem( controls.k, controls.m );
     const size_t vecSize = mySystem.diffPow * mySystem.varCount;
-
     y_vec y(vecSize);
     y[0] = controls.x;
     y[1] = controls.v;
-
     boolVec_t orders( vecSize, true );
     sheetYSub mySheet( controls.outCount, orders );
-
     solutions::explicitEuler myLittleEuler( mySystem, &problem::diffEq::derivative, mySheet );
-
-
     myLittleEuler.solve( y, controls.tFin, controls.tStep, controls.t0);
-
     if( mySheet.isFull() ) {
         mySheet.printTo();
     } else {
         std::cout << "Sheet is not full" << std::endl;
     }
-    
     return EXIT_SUCCESS;
 }
 

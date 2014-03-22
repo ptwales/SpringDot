@@ -17,53 +17,38 @@
 
 namespace storage
 {
-    void sheetYSub::pack ( y_vec yIn )
+    template<class T>
+    void sheetYSub<T>::pack(std::vector<T> yIn)
     {
         boolVec_t::iterator orderIt = orders.begin();
         y_vec::iterator yInIt = yIn.begin();
         y_vec::iterator yOutIt = last->begin();
-
-        if ( last == sheet.end() ) {
-            //Throw error
-            return;
-        }
-
-        while ( orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end() ) 
+        while(orderIt != orders.end() && yInIt != yIn.end() && yOutIt != last->end())
         {
-            if ( *orderIt ) {
+            if (*orderIt) {
                 *yOutIt = *yInIt;
                 yOutIt++;
             }
             yInIt++;
             orderIt++;
         }
-
-        if ( orderIt != orders.end() ) {
-            //Throw Error
-        }
-        if ( yInIt != yIn.end() ) {
-            //Throw Error
-        }
-        if ( yOutIt != last->end() ) {
-            //Throw Error
-        }
-
         last++;
     }
 
-    void sheetYSub::reOrder ( boolVec_t newOrders, user_prec reInit)
+    template<class T>
+    void sheetYSub::reOrder(boolVec_t newOrders, T reInit)
     {
         //Must be implemented in cpp
         return;
     }
 
-    void sheetYSub::printTo( FILE* dest, char format, char elDelim
-            , char vecDelim )
+    template<class T>
+    void sheetYSub::printTo(FILE* dest, char format, char elDelim, char vecDelim)
     {
         char pFormat[4] = {'%', format, elDelim, '\0'};
         y_vec::iterator x;
-        for ( sheet_t::iterator y = sheet.begin(); y < sheet.end(); y++ ) {
-            for (x = y->begin(); x < y->end(); x++ ) {
+        for(sheet_t::iterator y = sheet.begin(); y < sheet.end(); y++) {
+            for (x = y->begin(); x < y->end(); x++) {
                 fprintf(dest, pFormat, (*x));
             }
             putchar(vecDelim);

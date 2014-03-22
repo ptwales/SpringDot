@@ -35,30 +35,32 @@
 
 namespace storage 
 {
-    class sheetYSub	:public selective, public printable, public packable
+    template<class T>
+    class sheetYSub	:public selective<T>, public printable, public packable<T>
     {
         public:
-            sheetYSub( size_t length = 1, boolVec_t _orders = boolVec_t(1,true)
-                    , user_prec init_fill=filler )
-                : selective ( length, std::count( _orders.begin(), _orders.end(), true )	// size of subvectors
-                        , _orders, init_fill )
-            { last = sheet.begin(); }
+            sheetYSub(size_t length = 1,
+                      boolVec_t Orders = boolVec_t(1, true),
+                      T init_fill=0)
+                : selective<T>(length,
+                               std::count(Orders.begin(), Orders.end(), true),
+                               Orders, init_fill)
+            {last = sheet.begin();}
 
             //Default Copy should be good enough
 
             /*  PACKABLE INTERFACE */
             //Throws errors
-            void pack( y_vec );
-            void reset( )          { last = sheet.begin(); }
-            size_t packLimit( )    { return vecSize; }
-            bool isFull( )         { return ( last == sheet.end() ); }
+            void pack(y_vec);
+            void reset()          {last = sheet.begin();}
+            size_t packLimit()    {return vecSize;}
+            bool isFull()         {return (last == sheet.end());}
 
             /* selective interface */
-            void reOrder( boolVec_t newOrders, user_prec reInit=filler );
+            void reOrder(boolVec_t newOrders, T reInit=0);
 
             /* printable interface */ 
-
-            void printTo( FILE* dest=stdout, char format='g', char elDelim='\t'
+            void printTo(FILE* dest=stdout, char format='g', char elDelim='\t'
                     , char vecDelim='\n');
 
         protected:

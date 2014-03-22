@@ -6,22 +6,20 @@ Tests = test_sheetYsub test_spring
 TestDir = test_bin
 
 # OBJECTS
-# =========
+
+## STORAGE OBJECTS
 sheetYsub.o: storage/twoDVec.hpp storage/sheetInterfaces.hpp storage/sheetYsub.hpp storage/sheetYsub.cpp
 	$(CC) -c storage/sheetYsub.cpp
 
 ## SOLUTION OBJECTS
-## ==================
 explicitEuler.o: problem/diffEq.hpp solution/diffEqMeth.hpp solution/explicitEuler.hpp solution/explicitEuler.cpp
 	$(CC) -c solution/explicitEuler.cpp
 
 ## DEMO OBJECTS
-## ==============
 springTest_system.o: problem/diffEq.hpp demos/springTest_system.hpp demos/springTest_system.cpp
 	$(CC) -c demos/springTest_system.cpp
 
 # DEMOS
-# ========
 testall: $(Tests)
 
 test_sheetYsub: demos/test_sheetYsub.cpp sheetYsub.o 
