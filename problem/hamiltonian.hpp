@@ -28,7 +28,7 @@ namespace problem
         public:
             static const unsigned int derivePower = 2;
 
-            virtual user_prec netEngery( y_vec& y ) =0;
+            virtual user_prec netEnergy( y_vec& y ) =0;
 
             virtual user_prec netAngMom( y_vec& y ) =0;
 
